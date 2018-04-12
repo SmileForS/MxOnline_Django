@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'users',
     'courses',
     'organization',
-    'operation'
+    'operation',
+    'xadmin',
+    'crispy_forms'
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -89,6 +91,11 @@ DATABASES = {
         'USER':'LL',
         'PASSWORD':'123456',
         'PORT':3306,
+        'OPTIONS': {
+         "init_command": "SET foreign_key_checks = 0;",
+         },
+
+
     }
 }
 
@@ -115,15 +122,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False  # 这个改成False表示是本地时间，不是UTC的时间
 
 
 # Static files (CSS, JavaScript, Images)

@@ -11,6 +11,7 @@ class CityDict(models.Model):
     class Meta:
         verbose_name = '城市'
         verbose_name_plural = verbose_name
+        db_table = 'mx_city'
 
     def __str__(self):
         return self.name
@@ -28,6 +29,7 @@ class CourseOrg(models.Model):
     class Meta:
         verbose_name = '课程机构'
         verbose_name_plural = verbose_name
+        db_table = 'mx_course_org'
 
     def __str__(self):
         return self.name
@@ -48,6 +50,7 @@ class Teacher(models.Model):
     class Meta:
         verbose_name = '教师信息'
         verbose_name_plural = verbose_name
+        db_table = 'mx_teacher'
 
     def __str__(self):
         return self.name

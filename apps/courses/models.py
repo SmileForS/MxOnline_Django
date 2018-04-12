@@ -20,6 +20,7 @@ class Course(models.Model):
     class Meta:
         verbose_name = '课程'
         verbose_name_plural = verbose_name
+        db_table = 'mx_course'
 
     def __str__(self):
         return self.name
@@ -33,6 +34,7 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = '章节'
         verbose_name_plural = verbose_name
+        db_table = 'mx_lesson'
 
     def __str__(self):
         return self.name
@@ -46,6 +48,7 @@ class Video(models.Model):
     class Meta:
         verbose_name = '视频'
         verbose_name_plural = verbose_name
+        db_table ='mx_video'
 
     def __str__(self):
         return self.name
@@ -60,6 +63,7 @@ class CourseResource(models.Model):
     class Meta:
         verbose_name = '课程资源'
         verbose_name_plural = verbose_name
+        db_table = 'mx_course_resource'
 
     def __str__(self):
         return self.name

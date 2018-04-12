@@ -15,6 +15,7 @@ class UserAsk(models.Model):
     class Meta:
         verbose_name = '用户咨询'
         verbose_name_plural = verbose_name
+        db_table = 'mx_user_ask'
 
     def __str__(self):
         return self.name
@@ -30,6 +31,7 @@ class CourseComments(models.Model):
     class Meta:
         verbose_name = '课程评论'
         verbose_name_plural = verbose_name
+        db_table = 'mx_course_comments'
 
 
 class UserFavorite(models.Model):
@@ -41,6 +43,7 @@ class UserFavorite(models.Model):
     class Meta:
         verbose_name = '用户收藏'
         verbose_name_plural = verbose_name
+        db_table = 'mx_user_favorite'
 
 
 class UserMessage(models.Model):
@@ -53,6 +56,7 @@ class UserMessage(models.Model):
     class Meta:
         verbose_name = '用户消息'
         verbose_name_plural = verbose_name
+        db_table = 'mx_user_message'
 
 
 class UserCourse(models.Model):
@@ -63,3 +67,4 @@ class UserCourse(models.Model):
     class Meta:
         verbose_name = '用户课程'
         verbose_name_plural = verbose_name
+        db_table = 'mx_user_course'
