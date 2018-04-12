@@ -27,7 +27,7 @@ class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20,verbose_name='验证码')
     email = models.EmailField(max_length=50,verbose_name='邮箱')
     # 区分邮箱验证码是注册用还是找回密码用
-    send_type = models.CharField(choices=(('register','注册'),('forget','找回密码')),max_length=10,)
+    send_type = models.CharField(choices=(('register','注册'),('forget','找回密码')),max_length=10,verbose_name='验证码类型')
     send_time = models.DateTimeField(default=datetime.now)
     class Meta:
         verbose_name ='邮箱验证码'
@@ -35,7 +35,7 @@ class EmailVerifyRecord(models.Model):
         db_table = 'mx_email_verify_record'
 
     def __str__(self):
-        return self.code
+        return '{0}({1})'.format(self.code, self.email)
 
 class Banner(models.Model):
     title = models.CharField(max_length=100,verbose_name='标题')
