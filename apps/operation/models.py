@@ -59,6 +59,7 @@ class UserMessage(models.Model):
         db_table = 'mx_user_message'
 
 
+
 class UserCourse(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name='用户')
     course = models.ForeignKey(Course, verbose_name='课程')
