@@ -14,7 +14,9 @@ import os
 import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(1,os.path.join(BASE_DIR,'apps'))
+sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
+sys.path.insert(1,os.path.join(BASE_DIR,'libs'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -42,7 +44,8 @@ INSTALLED_APPS = [
     'organization',
     'operation',
     'xadmin',
-    'crispy_forms'
+    'crispy_forms',
+    'captcha',
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -142,3 +145,11 @@ USE_TZ = False  # 这个改成False表示是本地时间，不是UTC的时间
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
+EMAIL_HOST = 'smtp.163.com'
+# 端口号一般都是25
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'cpyfluoxiaohui@163.com'
+EMAIL_HOST_PASSWORD = 'Smilefors666'
+EMAIL_USE_TLS =False
+EMAIL_FROM = 'MxOnline<cpyfluoxiaohui@163.com>'
