@@ -13,8 +13,9 @@ class OrgListView(View):
         ct = request.GET.get('ct','')
         try:
             course_orgs = CourseOrg.objects.all()
-
+            hot_orgs = course_orgs.order_by('-click_nums')[:3]
             cities = CityDict.objects.all()
+
             if city_id:
                 # 在结果集中进行进一步筛选
                 course_orgs = course_orgs.filter(city_id=int(city_id))
@@ -41,5 +42,6 @@ class OrgListView(View):
             'org_nums':org_nums,
             'city_id':city_id,
             'ct':ct,
+            'hot_orgs':hot_orgs,
         }
         return render(request,'org-list.html',context)
