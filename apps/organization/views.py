@@ -8,10 +8,20 @@ class OrgListView(View):
     """课程机构视图"""
     def get(self,request):
         """显示页面"""
+        # 获取参数,取出筛选城市
+        city_id = request.GET.get('city','')
+        ct = request.GET.get('ct','')
         try:
             course_orgs = CourseOrg.objects.all()
-            org_nums = course_orgs.count()
+
             cities = CityDict.objects.all()
+            if city_id:
+                # 在结果集中进行进一步筛选
+                course_orgs = course_orgs.filter(city_id=int(city_id))
+            # 类别筛选
+            if ct:
+                course_orgs = course_orgs.filter(catgory=ct)
+            org_nums = course_orgs.count()
         except CourseOrg.DoesNotExist:
             return redirect(reverse('index'))
         try:
@@ -29,5 +39,7 @@ class OrgListView(View):
             'course_orgs':course_orgs,
             'cities':cities,
             'org_nums':org_nums,
+            'city_id':city_id,
+            'ct':ct,
         }
         return render(request,'org-list.html',context)
