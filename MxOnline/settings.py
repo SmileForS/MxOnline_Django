@@ -43,9 +43,10 @@ INSTALLED_APPS = [
     'courses',
     'organization',
     'operation',
-    'xadmin',
-    'crispy_forms',
-    'captcha',
+    'xadmin',       # 后台管理系统
+    'crispy_forms',  # 后台管理系统
+    'captcha',  # 生成验证码
+    'pure_pagination',  # 实现分页
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -159,3 +160,13 @@ EMAIL_FROM = 'MxOnline<cpyfluoxiaohui@163.com>'
 # 用户上传文件的路径
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# 分页配置
+PAGINATION_SETTINGS = {
+    #将显示的当前页面的邻近页面数量（默认值为10）
+    'PAGE_RANGE_DISPLAYED': 10,
+    # 将显示的第一页和最后一页相邻的页数（默认值为2）
+    'MARGIN_PAGES_DISPLAYED': 2,
+    #如果希望仅在显示第一页时提供无效页而不是404错误，请将SHOW_FIRST_PAGE_WHEN_INVALID设置为True
+    'SHOW_FIRST_PAGE_WHEN_INVALID': True,
+}
