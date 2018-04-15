@@ -11,6 +11,8 @@ class OrgListView(View):
         # 获取参数,取出筛选城市
         city_id = request.GET.get('city','')
         ct = request.GET.get('ct','')
+        sort = request.GET.get('sort','')
+
         try:
             course_orgs = CourseOrg.objects.all()
             hot_orgs = course_orgs.order_by('-click_nums')[:3]
@@ -22,6 +24,12 @@ class OrgListView(View):
             # 类别筛选
             if ct:
                 course_orgs = course_orgs.filter(catgory=ct)
+
+            if sort:
+                if sort == 'students':
+                    course_orgs = course_orgs.order_by('-students')
+                elif sort == 'courses':
+                    course_orgs = course_orgs.order_by('-course_nums')
             org_nums = course_orgs.count()
         except CourseOrg.DoesNotExist:
             return redirect(reverse('index'))
@@ -43,5 +51,6 @@ class OrgListView(View):
             'city_id':city_id,
             'ct':ct,
             'hot_orgs':hot_orgs,
+            'sort':sort,
         }
         return render(request,'org-list.html',context)
