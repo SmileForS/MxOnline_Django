@@ -18,6 +18,8 @@ from django.views.generic import TemplateView
 from users.views import LoginView,RegisterView,ActiveUserView,ForgetPwdView,ResetView,ModifyView
 from organization.views import OrgListView
 import xadmin
+from django.views.static import serve  # views.static是用于处理静态文件的
+from MxOnline.settings import MEDIA_ROOT
 import captcha
 
 urlpatterns = [
@@ -36,4 +38,7 @@ urlpatterns = [
     url(r'^modifypwd$',ModifyView.as_view(),name='modifypwd'),
     # 课程机构首页
     url(r'^org_list$',OrgListView.as_view(),name='org_list'),
+    # 配置media的路径，media是静态文件，需要用到django的内置函数
+    # 配置上传文件的访问处理函数
+    url(r'^media/(?P<path>.*?)$',serve,{'document_root':MEDIA_ROOT}),
 ]

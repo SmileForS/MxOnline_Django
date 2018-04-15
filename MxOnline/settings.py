@@ -79,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 配置django的media内部处理类,配置这个之后能自动将MEDIA_URL注册到html模板中去
+                'django.core.context_processors.media',
             ],
         },
     },
@@ -153,3 +155,7 @@ EMAIL_HOST_USER = 'cpyfluoxiaohui@163.com'
 EMAIL_HOST_PASSWORD = 'Smilefors666'
 EMAIL_USE_TLS =False
 EMAIL_FROM = 'MxOnline<cpyfluoxiaohui@163.com>'
+
+# 用户上传文件的路径
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
